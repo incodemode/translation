@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Stevebauman\Translation\Contracts\Client;
-use Stevebauman\Translation\Clients\GoogleTranslateApi;
+use incodemode\Translation\Contracts\Client;
+use incodemode\Translation\Clients\GoogleTranslateApi;
 use Illuminate\Contracts\Foundation\Application;
 use GuzzleHttp\Client as GuzzleClient;
 use App;
