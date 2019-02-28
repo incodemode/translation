@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace incodemode\Translation\Clients;
 
 use incodemode\Translation\Contracts\Client;
 use incodemode\Translation\Clients\GoogleTranslateApi;
