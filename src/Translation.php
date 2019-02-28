@@ -97,16 +97,17 @@ class Translation implements TranslationInterface
             // Make sure $text is actually a string and not and object / int
             $this->validateText($text);
 
+            // If there are replacements inside the array we need to convert them
+            // into google translate safe placeholders. ex :name to __name__
+            if (count($replacements) > 0) {
+                $text = $this->makeTranslationSafePlaceholders($text, $replacements);
+            }
+
             // Get the default translation text. This will insert the translation
             // and the default application locale if they don't
             // exist using firstOrCreate
             $defaultTranslation = $this->getDefaultTranslation($text);
 
-            // If there are replacements inside the array we need to convert them
-            // into google translate safe placeholders. ex :name to __name__
-            if (count($replacements) > 0) {
-                $defaultTranslation->translation = $this->makeTranslationSafePlaceholders($text, $replacements);
-            }
 
             // If a toLocale has been provided, we're only translating a single string, so
             // we won't call the getLocale method as it retrieves and sets the default
