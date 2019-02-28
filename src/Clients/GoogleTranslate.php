@@ -1,21 +1,26 @@
 <?php
 
-namespace Stevebauman\Translation\Clients;
+namespace App\Models;
 
 use Stevebauman\Translation\Contracts\Client;
-use Stichoza\GoogleTranslate\TranslateClient;
-
+use Stevebauman\Translation\Clients\GoogleTranslateApi;
+use Illuminate\Contracts\Foundation\Application;
+use GuzzleHttp\Client as GuzzleClient;
+use App;
 class GoogleTranslate implements Client
 {
     /** @var TranslateClient */
     protected $client;
+    protected $target;
 
     /**
      * @param TranslateClient $client
      */
-    public function __construct(TranslateClient $client)
+    public function __construct(Application $app, GuzzleClient  $guzzle)
     {
-        $this->client = $client;
+        
+        $this->client = new GoogleTranslateApi($app, $guzzle);
+        
     }
 
     /**

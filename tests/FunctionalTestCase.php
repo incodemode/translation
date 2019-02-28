@@ -1,9 +1,9 @@
 <?php
 
-namespace Stevebauman\Translation\Tests;
+namespace incodemode\Translation\Tests;
 
 use Orchestra\Testbench\TestCase;
-use Stevebauman\Translation\TranslationServiceProvider;
+use incodemode\Translation\TranslationServiceProvider;
 
 class FunctionalTestCase extends TestCase
 {
@@ -60,6 +60,6 @@ class FunctionalTestCase extends TestCase
      */
     protected function getPackageAliases($app)
     {
-        return ['Translation' => \Stevebauman\Translation\Facades\Translation::class];
+        return ['Translation' => \incodemode\Translation\Facades\Translation::class];
     }
 }

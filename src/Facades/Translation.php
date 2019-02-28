@@ -1,6 +1,6 @@
 <?php
 
-namespace Stevebauman\Translation\Facades;
+namespace incodemode\Translation\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

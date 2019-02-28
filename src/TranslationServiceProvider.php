@@ -1,13 +1,13 @@
 <?php
 
-namespace Stevebauman\Translation;
+namespace incodemode\Translation;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Stevebauman\Translation\Contracts\Translation as TranslationInterface;
+use incodemode\Translation\Contracts\Translation as TranslationInterface;
 
 class TranslationServiceProvider extends ServiceProvider
 {

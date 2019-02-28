@@ -1,10 +1,10 @@
 # Translation
 
-[![Travis CI](https://img.shields.io/travis/stevebauman/translation.svg?style=flat-square)](https://travis-ci.org/stevebauman/translation)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/stevebauman/translation.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevebauman/translation/?branch=master)
-[![Latest Stable Version](https://img.shields.io/packagist/v/stevebauman/translation.svg?style=flat-square)](https://packagist.org/packages/stevebauman/translation)
-[![Total Downloads](https://img.shields.io/packagist/dt/stevebauman/translation.svg?style=flat-square)](https://packagist.org/packages/stevebauman/translation)
-[![License](https://img.shields.io/packagist/l/stevebauman/translation.svg?style=flat-square)](https://packagist.org/packages/stevebauman/translation)
+[![Travis CI](https://img.shields.io/travis/incodemode/translation.svg?style=flat-square)](https://travis-ci.org/incodemode/translation)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/incodemode/translation.svg?style=flat-square)](https://scrutinizer-ci.com/g/incodemode/translation/?branch=master)
+[![Latest Stable Version](https://img.shields.io/packagist/v/incodemode/translation.svg?style=flat-square)](https://packagist.org/packages/incodemode/translation)
+[![Total Downloads](https://img.shields.io/packagist/dt/incodemode/translation.svg?style=flat-square)](https://packagist.org/packages/incodemode/translation)
+[![License](https://img.shields.io/packagist/l/incodemode/translation.svg?style=flat-square)](https://packagist.org/packages/incodemode/translation)
 
 ## Description
 
@@ -72,19 +72,19 @@ path:
 
 Require the translation package 
 
-    composer require stevebauman/translation
+    composer require incodemode/translation
 
 Add the service provider to your `config/app.php` config file
 
-    'Stevebauman\Translation\TranslationServiceProvider',
+    'incodemode\Translation\TranslationServiceProvider',
     
 Add the facade to your aliases in your `config/app.php` config file
 
-    'Translation' => 'Stevebauman\Translation\Facades\Translation',
+    'Translation' => 'incodemode\Translation\Facades\Translation',
     
 Publish the migrations
 
-    php artisan vendor:publish --provider="Stevebauman\Translation\TranslationServiceProvider"
+    php artisan vendor:publish --provider="incodemode\Translation\TranslationServiceProvider"
     
 Run the migrations
 
@@ -187,7 +187,7 @@ You must provide you're own way of updating translations (controllers/views etc)
 As of `v1.3.4` you can now inject the `Translation` contract into your controllers without the use of a facade:
 
 ```php
-use Stevebauman\Translation\Contracts\Translation;
+use incodemode\Translation\Contracts\Translation;
 
 class BlogController extends Controller
 {
@@ -229,7 +229,7 @@ you must create them and implement their trait. Here's an example:
 
 The Locale Model:
     
-    use Stevebauman\Translation\Traits\LocaleTrait;
+    use incodemode\Translation\Traits\LocaleTrait;
     use Illuminate\Database\Eloquent\Model;
     
     class Locale extends Model
@@ -266,7 +266,7 @@ The Locale Model:
 
 The Translation Model:
 
-    use Stevebauman\Translation\Traits\TranslationTrait;
+    use incodemode\Translation\Traits\TranslationTrait;
     use Illuminate\Database\Eloquent\Model;
     
     class Translation extends Model
@@ -349,7 +349,7 @@ the locale middleware:
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         
         // Insert Locale Middleware
-        'locale' => \Stevebauman\Translation\Middleware\LocaleMiddleware::class
+        'locale' => \incodemode\Translation\Middleware\LocaleMiddleware::class
     ];
 
 Now, in your `app/Http/routes.php` file, insert the middleware and the following Translation method in the route

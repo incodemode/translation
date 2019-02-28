@@ -1,6 +1,6 @@
 <?php
 
-namespace Stevebauman\Translation\Contracts;
+namespace incodemode\Translation\Contracts;
 
 use Illuminate\Contracts\Foundation\Application;
 use InvalidArgumentException;

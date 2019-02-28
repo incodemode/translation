@@ -1,9 +1,9 @@
 <?php
 
-namespace Stevebauman\Translation\Models;
+namespace incodemode\Translation\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Stevebauman\Translation\Traits\LocaleTrait;
+use incodemode\Translation\Traits\LocaleTrait;
 
 class Locale extends Model
 {

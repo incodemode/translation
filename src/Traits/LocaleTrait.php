@@ -1,6 +1,6 @@
 <?php
 
-namespace Stevebauman\Translation\Traits;
+namespace incodemode\Translation\Traits;
 
 trait LocaleTrait
 {

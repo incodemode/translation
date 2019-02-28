@@ -22,7 +22,7 @@ return [
         |
         */
 
-        'locale' => Stevebauman\Translation\Models\Locale::class,
+        'locale' => incodemode\Translation\Models\Locale::class,
 
         /*
         |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ return [
         |
         */
 
-        'translation' => Stevebauman\Translation\Models\Translation::class,
+        'translation' => incodemode\Translation\Models\Translation::class,
 
     ],
 
@@ -53,11 +53,11 @@ return [
         |--------------------------------------------------------------------------
         |
         |  The translation client providing translation service, must implement
-        |  Stevebauman\Translation\Contracts\Client.
+        |  incodemode\Translation\Contracts\Client.
         |
         */
 
-        'client' => Stevebauman\Translation\Clients\GoogleTranslate::class,
+        'client' => incodemode\Translation\Clients\GoogleTranslate::class,
 
         /*
         |--------------------------------------------------------------------------
