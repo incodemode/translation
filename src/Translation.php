@@ -108,7 +108,6 @@ class Translation implements TranslationInterface
             // exist using firstOrCreate
             $defaultTranslation = $this->getDefaultTranslation($text);
 
-
             // If a toLocale has been provided, we're only translating a single string, so
             // we won't call the getLocale method as it retrieves and sets the default
             // session locale. If it has not been provided, we'll get the
@@ -128,12 +127,13 @@ class Translation implements TranslationInterface
             // Since we are not on default translation locale, we will have to
             // create (or get first) translation for provided locale where
             // parent translation is our default translation.
+            
             $translation = $this->firstOrCreateTranslation(
                 $toLocale,
                 $defaultTranslation->translation,
                 $defaultTranslation
             );
-
+            
             return $this->makeReplacements($translation->translation, $replacements);
         } catch (\Illuminate\Database\QueryException $e) {
             // If foreign key integrity constrains fail, we have a caching issue
@@ -318,12 +318,13 @@ class Translation implements TranslationInterface
     {
         // We'll check to see if there's a cached translation
         // first before we try and hit the database.
-        $cachedTranslation = $this->getCacheTranslation($locale, $text);
+        $cachedTranslation = $this->getCacheTranslation($locale, $text, $parentTranslation);
 
         if ($cachedTranslation instanceof Model) {
+
             return $cachedTranslation;
         }
-
+        
         // Check if auto translation is enabled. If so we'll run
         // the text through google translate and
         // save it, then cache it.
@@ -416,7 +417,7 @@ class Translation implements TranslationInterface
      *
      * @return bool|Model
      */
-    protected function getCacheTranslation(Model $locale, $text)
+    protected function getCacheTranslation(Model $locale, $text, $parentTranslation = null)
     {
         $id = $this->getTranslationCacheId($locale, $text);
 
@@ -425,7 +426,21 @@ class Translation implements TranslationInterface
         if ($cachedTranslation instanceof Model) {
             return $cachedTranslation;
         }
-
+        if($parentTranslation){
+            // it is not a root translation
+            $cachedTranslation = $this->translationModel->where('locale_id', '=', $locale->id)->where('translation_id','=',$parentTranslation->id)->first();
+            if ($cachedTranslation) {
+                return $cachedTranslation;
+            }
+            
+        }else{
+            //it is a root translation
+            $cachedTranslation = $this->translationModel->where('locale_id', '=', $locale->id)->where('translation','=',$text)->first();
+            if ($cachedTranslation) {
+                return $cachedTranslation;
+            }
+        }
+        
         // Cached translation wasn't found, let's return
         // false so we know to generate one.
         return false;
