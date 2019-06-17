@@ -136,6 +136,7 @@ class Translation implements TranslationInterface
             
             return $this->makeReplacements($translation->translation, $replacements);
         } catch (\Illuminate\Database\QueryException $e) {
+            \Log::error($e);
             // If foreign key integrity constrains fail, we have a caching issue
             if (!$runOnce) {
                 // If this has not been run before, proceed
